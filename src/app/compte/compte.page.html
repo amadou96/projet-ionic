@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Compte
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="ion-margin" *ngFor="let utilisateur of user">
+    <ion-item>
+      {{utilisateur.prenom}}
+    </ion-item>
+    <ion-item>
+      {{utilisateur.nom}}
+    </ion-item>
+    <ion-item>
+      {{utilisateur.address}}
+    </ion-item>
+    <ion-item>
+      {{utilisateur.numero}}
+    </ion-item>
+  </ion-list>
+</ion-content>

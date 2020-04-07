@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Liste Plats
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let utilisateur of user">
+    <div class="ion-margin" *ngIf="compare(utilisateur.role,'user')">
+      <form (submit)="enregistrerCommande()">
+        <ion-list>
+          <ion-item>
+            <ion-select name="commande" [(ngModel)]="platname">
+              <ion-select-option *ngFor="let plat of plats">{{plat.nom}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-button type="submit" expand="full" color="success">Commander</ion-button>
+      </form>
+      <h5 style="font-weight: bold;">Menu du Jour Plats</h5>
+      <ion-list>
+        <ion-item *ngFor="let plat of plats">
+          <ion-label>{{plat.nom}}</ion-label>
+          <ion-label>{{plat.prix}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="ion-margin" *ngIf="compare(utilisateur.role, 'admin')">
+      <h5 style="font-weight: bold;">Gestion Plat</h5>
+      <ion-list>
+        <ion-item *ngFor="let plat of plats">
+          <ion-label>{{plat.nom}}</ion-label>
+          <ion-label>{{plat.prix}}</ion-label>
+          <ion-icon color="warning" name="create" (click)="modifierPlat(plat.id)">
+          </ion-icon>
+          <ion-icon color="danger" name="trash" (click)="supprimerPlat(plat.id)">
+          </ion-icon>
+        </ion-item><br>
+        <ion-button routerLink="/tabs/plat/ajouter" expand="full">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-list>
+      <ion-list>
+        <ion-text style="font-weight: bold;">Les Commandes</ion-text>
+        <ion-item *ngFor="let commande of commandes">
+          <ion-label>{{commande.proprietaire}}</ion-label>
+          <ion-label>{{commande.plat}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

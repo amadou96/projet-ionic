@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="enregistrerUtilisateur()">
+    <ion-list class="ion-margin">
+      <ion-item>
+        <ion-label position="stacked">Prenom</ion-label>
+        <ion-input type="text" [(ngModel)]="user.prenom" name="prenom" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nom</ion-label>
+        <ion-input type="text" [(ngModel)]="user.nom" name="nom" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Numero</ion-label>
+        <ion-input type="number" [(ngModel)]="user.numero" name="numero" #actor="ngModel"></ion-input>
+        <ion-text color="danger" *ngIf="actor.hasError('required')">Champ Obligatoire</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Addresse</ion-label>
+        <ion-input type="text" [(ngModel)]="user.address" name="address" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" expand="full" class="ion-margin">S'Inscrire</ion-button>
+  </form>
+</ion-content>

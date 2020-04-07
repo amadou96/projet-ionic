@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>modifier</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (submit)="modifierPlat()" [formGroup]="formGroup" *ngIf="plat" method="POST">
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">Nom:</ion-label>
+            <ion-input formControlName="nom" type="text"></ion-input>
+            <ion-text color="danger" *ngIf="nomControl.hasError('required')">Champ Obligatoire!</ion-text>
+            <ion-text color="danger" *ngIf="nomControl.hasError('minlength')">saisissez au moins 3 caractere</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Prix:</ion-label>
+            <ion-input formControlName="prix" type="number"></ion-input>
+            <ion-text color="danger" *ngIf="prixControl.hasError('required')">Champs Obligatoire</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Description:</ion-label>
+            <ion-textarea formControlName="description" ></ion-textarea>
+          </ion-item>
+        </ion-list>
+        <ion-button type="submit" expand="full" [disabled]="formGroup.invalid">Modifier</ion-button>
+      </form>
+</ion-content>

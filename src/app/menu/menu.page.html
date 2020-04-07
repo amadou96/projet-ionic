@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Menu 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card" *ngFor="let plat of plats">
+      <ion-card-header>
+        <ion-card-subtitle style="font-weight: bold; ">{{plat.prix}} frs</ion-card-subtitle>
+        <ion-card-title style="font-weight: bold; ">{{plat.nom}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{plat.description}}</p>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

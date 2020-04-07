@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>ajouter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="enregistrerPlat()">
+    <ion-list class="ion-margin">
+      <ion-item>
+        <ion-label position="stacked">Nom:</ion-label>
+        <ion-input type="text" [(ngModel)]="plat.nom" name="nom" required minlength="3" #actor="ngModel"></ion-input>
+        <ion-text color="danger" *ngIf="actor.hasError('required')">Champ Obligatoire</ion-text>
+        <ion-text color="danger" *ngIf="actor.hasError('minlength')">saisissez au moins 3 caractere</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Prix:</ion-label>
+        <ion-input type="number" [(ngModel)]="plat.prix" name="prix" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Description:</ion-label>
+        <ion-textarea [(ngModel)]="plat.description" name="description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-button class="ion-margin" type="submit" expand="full">Enregistrer</ion-button>
+  </form>
+</ion-content>
